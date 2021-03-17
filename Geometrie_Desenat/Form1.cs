@@ -18,24 +18,7 @@ namespace Geometrie_Desenat
             InitializeComponent();
         }
 
-        Bitmap bmp;
-        Graphics grp;
-        static Random rnd = new Random();
-        public class point
-        {
-            public float x, y;
-            public point()
-            {
-                x = rnd.Next(900);
-                y = rnd.Next(600);
-            }
-            public void Draw(Graphics grp)
-            {
-                grp.DrawEllipse(new Pen(Color.Red, 2), x, y, 2, 2);
-            }
-        }
-
-        private List<point> points = new List<point>();
+        private List<PointF> points = new List<PointF>();
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -46,28 +29,28 @@ namespace Geometrie_Desenat
         private void button1_Click(object sender, EventArgs e)
         {
             gfx.Clear(Color.White);
-            point newPoint = new point();
+            PointF newPoint = new PointF();
             string[] text = textBox1.Text.Split(new[] { ' ' });
-            newPoint.x = Int32.Parse(text[0]);
-            newPoint.y = Int32.Parse(text[1]);
+            newPoint.X = Int32.Parse(text[0]);
+            newPoint.Y = Int32.Parse(text[1]);
 
             points.Add(newPoint);
-            foreach(var p in points)
+            foreach (var p in points)
             {
-                gfx.FillEllipse(new SolidBrush(Color.Black), p.x, p.y, 2, 2);
+                gfx.FillEllipse(new SolidBrush(Color.Black), p.X, p.Y, 2, 2);
             }
 
             for (int i = 1; i < points.Count; i++)
             {
-                gfx.DrawLine(Pens.Black, points[i].x, points[i].y, points[i - 1].x, points[i - 1].y);
+                gfx.DrawLine(Pens.Black, points[i], points[i - 1]);
             }
 
             int len = points.Count;
 
-            gfx.DrawLine(Pens.Black, points[len - 1].x, points[len - 1].y, points[0].x, points[0].y);
+            gfx.DrawLine(Pens.Black, points[len - 1], points[0]);
 
             textBox1.Text = "";
-            
+
 
         }
 
@@ -76,13 +59,32 @@ namespace Geometrie_Desenat
             int len = points.Count;
             for (int i = 0; i < len; i++)
             {
-                point p1 = points[(i + 1) % 3];
-                point p2 = points[(i + 2) % 3];
+                PointF p1 = points[(i + 1) % 3];
+                PointF p2 = points[(i + 2) % 3];
 
-                point p0 = points[i];
+                PointF p0 = points[i];
 
-                gfx.FillEllipse(new SolidBrush(Color.Red), p0.x, p0.y, 2, 2);
-                gfx.DrawLine(Pens.Red, p0.x, p0.y, (p1.x + p2.x) / 2, (p1.y + p2.y) / 2);
+                gfx.FillEllipse(new SolidBrush(Color.Red), p0.X, p0.Y, 2, 2);
+                gfx.DrawLine(new Pen(Brushes.Red, 2), p0, new PointF((p1.X + p2.X) / 2, (p1.Y + p2.Y) / 2));
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int len = points.Count;
+            for (int i = 0; i < len; i++)
+            {
+                PointF p1 = points[(i + 1) % 3];
+                PointF p2 = points[(i + 2) % 3];
+
+                PointF p0 = points[i];
+                float t = (p0.X - p1.X) * (p2.X - p1.X) + (p0.Y - p1.Y) * (p2.Y - p1.Y);
+                t = t / ((p2.X - p1.X) * (p2.X - p1.X) + (p2.Y - p1.Y) * (p2.Y - p1.Y));
+                PointF p4 = new PointF();
+                p4.X = p1.X + t * (p2.X - p1.X);
+                p4.Y = p1.Y + t * (p2.Y - p1.Y);
+                gfx.FillEllipse(new SolidBrush(Color.Red), p4.X, p4.Y, 2, 2);
+                gfx.DrawLine(new Pen(Brushes.Green, 2), p0, p4);
             }
         }
     }

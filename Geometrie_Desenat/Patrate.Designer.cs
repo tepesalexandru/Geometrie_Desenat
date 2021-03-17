@@ -1,7 +1,7 @@
 ﻿
 namespace Geometrie_Desenat
 {
-    partial class Form1
+    partial class Patrate
     {
         /// <summary>
         /// Required designer variable.
@@ -30,10 +30,9 @@ namespace Geometrie_Desenat
         private void InitializeComponent()
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,60 +41,49 @@ namespace Geometrie_Desenat
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1582, 853);
+            this.pictureBox1.Size = new System.Drawing.Size(1184, 661);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(1172, 218);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(163, 22);
-            this.textBox1.TabIndex = 1;
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1172, 256);
+            this.button1.Location = new System.Drawing.Point(932, 208);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(163, 40);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Draw";
+            this.button1.Size = new System.Drawing.Size(120, 40);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Draw Polygon";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(932, 168);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 2;
+            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1172, 316);
+            this.button2.Location = new System.Drawing.Point(932, 254);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(163, 40);
+            this.button2.Size = new System.Drawing.Size(120, 40);
             this.button2.TabIndex = 3;
-            this.button2.Text = "Draw Medians";
+            this.button2.Text = "Party Time";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
-            // button3
+            // Patrate
             // 
-            this.button3.Location = new System.Drawing.Point(1172, 372);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(163, 40);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Draw Heights";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // Form1
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1582, 853);
-            this.Controls.Add(this.button3);
+            this.ClientSize = new System.Drawing.Size(1184, 661);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Name = "Patrate";
+            this.Text = "Patrate";
+            this.Load += new System.EventHandler(this.Patrate_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -105,10 +93,8 @@ namespace Geometrie_Desenat
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
     }
 }
-
