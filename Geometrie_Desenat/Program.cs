@@ -16,7 +16,7 @@ namespace Geometrie_Desenat
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SimpleConvexHull());
+            Application.Run(new GrahamScan());
         }
     }
 }
