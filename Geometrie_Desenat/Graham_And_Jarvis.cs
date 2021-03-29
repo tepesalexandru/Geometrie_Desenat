@@ -47,8 +47,15 @@ namespace Geometrie_Desenat
             gfx.Clear(Color.White);
             foreach (PointF p in points)
             {
-                gfx.FillEllipse(new SolidBrush(Color.Black), p.X - 3, p.Y - 3, 6, 6);
+                DrawPoint(p);
             }
+        }
+
+        private void DrawPoint(PointF p)
+        {
+            gfx.FillEllipse(new SolidBrush(Color.Black), p.X - 7, p.Y - 7, 14, 14);
+            gfx.FillEllipse(new SolidBrush(Color.Red), p.X - 5, p.Y - 5, 10, 10);
+
         }
 
         private void Drawhull()
@@ -130,12 +137,12 @@ namespace Geometrie_Desenat
             while (true)
             {
                 PointF next = new PointF();
-                next.X = -10;
-                next.Y = -10;
+                next.X = -1;
+                next.Y = -1;
                 foreach (PointF p in points)
                 {
                     if (p.X == previous.X && p.Y == previous.Y) continue;
-                    if (next.X == -10 && next.Y == -10)
+                    if (next.X == -1 && next.Y == -1)
                     {
                         next = p;
                         continue;
@@ -154,7 +161,9 @@ namespace Geometrie_Desenat
 
         private void GrahamScan_Load(object sender, EventArgs e)
         {
+            pictureBox1.BackColor = Color.White;
             gfx = pictureBox1.CreateGraphics();
+            gfx.Clear(Color.White);
         }
 
         private void drawGraham_Click(object sender, EventArgs e)
@@ -165,14 +174,39 @@ namespace Geometrie_Desenat
             DrawPoints();
             Drawhull();
         }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Graham();
+            Drawhull();
+        }
         private void drawJarvis_Click(object sender, EventArgs e)
         {
-            int n = Convert.ToInt32(textNumarPuncte.Text);
-            GenerateRandomPoints(n);
             Jarvis();
-            DrawPoints();
             Drawhull();
         }
 
+        private void generateRandom_Click(object sender, EventArgs e)
+        {
+            int n = Convert.ToInt32(textNumarPuncte.Text);
+            GenerateRandomPoints(n);
+            DrawPoints();
+        }
+
+        private void addPoint_Click(object sender, EventArgs e)
+        {
+            string[] s = textPuncteManual.Text.Split(' ');
+            float x = float.Parse(s[0]);
+            float y = float.Parse(s[1]);
+            PointF p = new PointF(x, y);
+            points.Add(p);
+            DrawPoint(p);
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            points.Clear();
+            gfx.Clear(Color.White);
+            hull.Clear();
+        }
     }
 }
