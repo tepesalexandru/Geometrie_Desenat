@@ -52,11 +52,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="GrahamScan.cs">
+    <Compile Include="Graham_And_Jarvis.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GrahamScan.Designer.cs">
-      <DependentUpon>GrahamScan.cs</DependentUpon>
+    <Compile Include="Graham_And_Jarvis.Designer.cs">
+      <DependentUpon>Graham_And_Jarvis.cs</DependentUpon>
     </Compile>
     <Compile Include="Patrate.cs">
       <SubType>Form</SubType>
@@ -75,8 +75,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GrahamScan.resx">
-      <DependentUpon>GrahamScan.cs</DependentUpon>
+    <EmbeddedResource Include="Graham_And_Jarvis.resx">
+      <DependentUpon>Graham_And_Jarvis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Patrate.resx">
       <DependentUpon>Patrate.cs</DependentUpon>

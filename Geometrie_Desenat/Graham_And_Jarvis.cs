@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace Geometrie_Desenat
 {
-    public partial class GrahamScan : Form
+    public partial class Graham_And_Jarvis : Form
     {
         private static Graphics gfx;
         private static Random rnd = new Random();
         private List<PointF> points = new List<PointF>();
-        List<PointF> stivaGraham = new List<PointF>();
+        List<PointF> hull = new List<PointF>();
         Brush[] brushes = new Brush[] {
             Brushes.DarkOrange,
             Brushes.Red,
@@ -26,7 +26,7 @@ namespace Geometrie_Desenat
             Brushes.Brown,
             Brushes.Black
         };
-        public GrahamScan()
+        public Graham_And_Jarvis()
         {
             InitializeComponent();
         }
@@ -51,13 +51,13 @@ namespace Geometrie_Desenat
             }
         }
 
-        private void DrawHull()
+        private void Drawhull()
         {
-            for (int i = 0; i < stivaGraham.Count - 1; i++)
+            for (int i = 0; i < hull.Count - 1; i++)
             {
-                gfx.DrawLine(new Pen(brushes[i % 8], 4), stivaGraham[i], stivaGraham[i + 1]);
+                gfx.DrawLine(new Pen(brushes[i % 8], 4), hull[i], hull[i + 1]);
             }
-            gfx.DrawLine(new Pen(brushes[0], 4), stivaGraham[stivaGraham.Count - 1], stivaGraham[0]);
+            gfx.DrawLine(new Pen(brushes[0], 4), hull[hull.Count - 1], hull[0]);
         }
 
         private void FindLowestPoint()
@@ -106,17 +106,49 @@ namespace Geometrie_Desenat
 
         private void Graham()
         {
+            hull.Clear();
             FindLowestPoint();
             SortPointsByAngle(points[0]);
-            stivaGraham.Add(points[0]);
-            stivaGraham.Add(points[1]);
+            hull.Add(points[0]);
+            hull.Add(points[1]);
             for (int i = 2; i < points.Count; i++)
             {
-                while (stivaGraham.Count > 1 && !IsCounterClockwiseTurn(stivaGraham[stivaGraham.Count - 2], stivaGraham[stivaGraham.Count - 1], points[i]))
+                while (hull.Count > 1 && !IsCounterClockwiseTurn(hull[hull.Count - 2], hull[hull.Count - 1], points[i]))
                 {
-                    stivaGraham.RemoveAt(stivaGraham.Count - 1);
+                    hull.RemoveAt(hull.Count - 1);
                 }
-                stivaGraham.Add(points[i]);
+                hull.Add(points[i]);
+            }
+        }
+
+        private void Jarvis()
+        {
+            hull.Clear();
+            FindLowestPoint();
+            hull.Add(points[0]);
+            PointF previous = points[0];
+            while (true)
+            {
+                PointF next = new PointF();
+                next.X = -10;
+                next.Y = -10;
+                foreach (PointF p in points)
+                {
+                    if (p.X == previous.X && p.Y == previous.Y) continue;
+                    if (next.X == -10 && next.Y == -10)
+                    {
+                        next = p;
+                        continue;
+                    }
+
+                    if (IsCounterClockwiseTurn(previous, next, p))
+                    {
+                        next = p;
+                    }
+                }
+                if (next.X == points[0].X && next.Y == points[0].Y) break;
+                hull.Add(next);
+                previous = next;
             }
         }
 
@@ -125,13 +157,22 @@ namespace Geometrie_Desenat
             gfx = pictureBox1.CreateGraphics();
         }
 
-        private void drawPoints_Click(object sender, EventArgs e)
+        private void drawGraham_Click(object sender, EventArgs e)
         {
             int n = Convert.ToInt32(textNumarPuncte.Text);
             GenerateRandomPoints(n);
             Graham();
             DrawPoints();
-            DrawHull();
+            Drawhull();
         }
+        private void drawJarvis_Click(object sender, EventArgs e)
+        {
+            int n = Convert.ToInt32(textNumarPuncte.Text);
+            GenerateRandomPoints(n);
+            Jarvis();
+            DrawPoints();
+            Drawhull();
+        }
+
     }
 }

@@ -16,7 +16,7 @@ namespace Geometrie_Desenat
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GrahamScan());
+            Application.Run(new Graham_And_Jarvis());
         }
     }
 }

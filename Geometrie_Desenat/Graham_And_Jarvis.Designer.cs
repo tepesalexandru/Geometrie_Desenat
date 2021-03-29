@@ -1,7 +1,7 @@
 ﻿
 namespace Geometrie_Desenat
 {
-    partial class GrahamScan
+    partial class Graham_And_Jarvis
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,8 @@ namespace Geometrie_Desenat
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textNumarPuncte = new System.Windows.Forms.TextBox();
-            this.drawPoints = new System.Windows.Forms.Button();
+            this.drawJarvis = new System.Windows.Forms.Button();
+            this.drawGraham = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,25 +52,36 @@ namespace Geometrie_Desenat
             this.textNumarPuncte.Size = new System.Drawing.Size(100, 22);
             this.textNumarPuncte.TabIndex = 1;
             // 
-            // drawPoints
+            // drawJarvis
             // 
-            this.drawPoints.Location = new System.Drawing.Point(1081, 87);
-            this.drawPoints.Name = "drawPoints";
-            this.drawPoints.Size = new System.Drawing.Size(100, 36);
-            this.drawPoints.TabIndex = 2;
-            this.drawPoints.Text = "Draw";
-            this.drawPoints.UseVisualStyleBackColor = true;
-            this.drawPoints.Click += new System.EventHandler(this.drawPoints_Click);
+            this.drawJarvis.Location = new System.Drawing.Point(1081, 129);
+            this.drawJarvis.Name = "drawJarvis";
+            this.drawJarvis.Size = new System.Drawing.Size(100, 36);
+            this.drawJarvis.TabIndex = 3;
+            this.drawJarvis.Text = "Draw Jarvis";
+            this.drawJarvis.UseVisualStyleBackColor = true;
+            this.drawJarvis.Click += new System.EventHandler(this.drawJarvis_Click);
             // 
-            // GrahamScan
+            // drawGraham
+            // 
+            this.drawGraham.Location = new System.Drawing.Point(1081, 87);
+            this.drawGraham.Name = "drawGraham";
+            this.drawGraham.Size = new System.Drawing.Size(100, 36);
+            this.drawGraham.TabIndex = 4;
+            this.drawGraham.Text = "Draw Graham";
+            this.drawGraham.UseVisualStyleBackColor = true;
+            this.drawGraham.Click += new System.EventHandler(this.drawGraham_Click);
+            // 
+            // Graham_And_Jarvis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
-            this.Controls.Add(this.drawPoints);
+            this.Controls.Add(this.drawGraham);
+            this.Controls.Add(this.drawJarvis);
             this.Controls.Add(this.textNumarPuncte);
             this.Controls.Add(this.pictureBox1);
-            this.Name = "GrahamScan";
+            this.Name = "Graham_And_Jarvis";
             this.Text = "GrahamScan";
             this.Load += new System.EventHandler(this.GrahamScan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -82,6 +94,7 @@ namespace Geometrie_Desenat
 
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox textNumarPuncte;
-        private System.Windows.Forms.Button drawPoints;
+        private System.Windows.Forms.Button drawJarvis;
+        private System.Windows.Forms.Button drawGraham;
     }
 }
