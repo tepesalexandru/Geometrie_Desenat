@@ -97,7 +97,7 @@ namespace Geometrie_Desenat
                 theta += angles[i];
             }
 
-            // Return the points.
+            // Return the points
             return points;
         }
 
