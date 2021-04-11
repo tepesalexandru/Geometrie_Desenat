@@ -159,6 +159,21 @@ namespace Geometrie_Desenat
             }
         }
 
+        private double CrossProduct(PointF a, PointF b)
+        {
+            return a.X * b.Y - a.Y * b.X;
+        }
+
+        private double Area()
+        {
+            double sum = 0f;
+            for (int i = 0; i < hull.Count; i++)
+            {
+                sum += CrossProduct(hull[i], hull[(i + 1) % hull.Count]);
+            }
+            return Math.Abs(sum) / 2f;
+        }
+
         private void GrahamScan_Load(object sender, EventArgs e)
         {
             pictureBox1.BackColor = Color.White;

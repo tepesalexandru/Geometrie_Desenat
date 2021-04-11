@@ -146,7 +146,6 @@ namespace Geometrie_Desenat
             ans.Clear();
 
             int numberOfPoints = points.Count;
-            int k = 0;
 
             // Lower Hull
             for (int i = 0; i < numberOfPoints; i++)
