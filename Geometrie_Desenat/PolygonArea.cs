@@ -40,8 +40,8 @@ namespace Geometrie_Desenat
 
         private void DrawPoint(PointF p)
         {
-            gfx.FillEllipse(new SolidBrush(Color.Black), p.X - 7, p.Y - 7, 14, 14);
-            gfx.FillEllipse(new SolidBrush(Color.Red), p.X - 5, p.Y - 5, 10, 10);
+            gfx.FillEllipse(new SolidBrush(Color.DarkCyan), p.X - 7, p.Y - 7, 14, 14);
+            gfx.FillEllipse(new SolidBrush(Color.LightBlue), p.X - 5, p.Y - 5, 10, 10);
         }
 
         private double CrossProduct(PointF a, PointF b)
@@ -129,8 +129,8 @@ namespace Geometrie_Desenat
 
         private void drawPolygon_Click(object sender, EventArgs e)
         {
-            gfx.DrawPolygon(new Pen(new SolidBrush(Color.Red)), points.ToArray());
-            gfx.FillPolygon(new SolidBrush(Color.Red), points.ToArray());
+            gfx.DrawPolygon(new Pen(new SolidBrush(Color.LightBlue)), points.ToArray());
+            gfx.FillPolygon(new SolidBrush(Color.LightBlue), points.ToArray());
             DrawPoints();
         }
 
@@ -152,8 +152,8 @@ namespace Geometrie_Desenat
             if (points.Count >= 2)
             {
 
-                gfx.DrawPolygon(new Pen(new SolidBrush(Color.Red)), points.ToArray());
-                gfx.FillPolygon(new SolidBrush(Color.Red), points.ToArray());
+                gfx.DrawPolygon(new Pen(new SolidBrush(Color.LightBlue)), points.ToArray());
+                gfx.FillPolygon(new SolidBrush(Color.LightBlue), points.ToArray());
             }
             DrawPoints();
             manualInput.Text = "";
